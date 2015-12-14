@@ -1,7 +1,180 @@
 <!DOCTYPE html>
+
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages : xujanus</p>
-</body>
+	<head>
+		<title>xujanus的博客</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				background: url(images/background.gif);
+			}
+			.mainContent{
+				width: 78%;
+				float:left;
+			}
+			aside{
+				margin-top:-1%;
+				width: 18%;
+				float:right;
+			}
+			header{
+				margin-bottom:8%;
+			}
+
+
+			/* 导航 */
+			nav ul li{
+				float:left;/*让li元素左浮动*/
+				list-style-type:none;
+			}
+			nav ul li a{
+				width:80px;/*设置元素宽为80px*/
+				height:28px;/*设置高度为28px*/
+				line-height:28px;/*设置行距为28px，让文字在每行的中间位置*/
+				background: #a6c9ba;/*设置元素的背景为红色*/
+				color:#FFF;/*文字颜色是白色*/
+				margin:5px 10px;
+				font-size:12px;/*用12号字*/
+				display:block;/*这个比较关键，因为a本身就是联级元素，本身不具有宽高，用这个把它变成块级元素，这样前面设置的宽和高就能起作用了*/
+				text-align:center;/*让文本居中*/
+				text-decoration:none; /*去掉下划线*/
+			}
+			nav ul li a:hover{
+				width:78px;
+				height:26px;
+				line-height:28px;
+				border:1px solid red;
+				color:red;
+				background:#FFF;
+			}
+
+			/* 博主留言部分 */
+			.blogger_talk div{
+				float:left;
+				width: 110px;
+				height: 100%;
+				text-align: right;
+				font-size: 84%;
+				color: #666;
+			}
+			/* 头像旋转 */
+			.blogger_talk img {
+				-moz-transform: rotate(-5deg);
+				-o-transform: rotate(-5deg);
+				-webkit-transform: rotate(-5deg);
+				transform: rotate(-5deg);
+			}
+			.blogger_talk ol {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.blogger_face_icon{
+				width:110px;
+				height: 88px;
+			}
+			blockquote {
+				margin: 0 0 0 112px;
+				padding: 10px 15px 5px 15px;
+				border-top: 1px solid #fff;
+				word-wrap: break-word;
+				/* 圆角效果 */
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px; /* Safari 4 and earlier */
+				border-radius: 20px; /* Opera, Chrome, Safari 5, IE 9 */
+				/* 为了适应气泡三角的图标，增加的CSS */
+				min-height: 42px;
+				position: relative;
+				/* 半透明背景 */
+				background-color: hsla(182,44%,76%,.5);
+				/* 渐变效果 */
+				background-image: -moz-linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,0) 30px);
+				background-image: -webkit-gradient(linear, 0 0, 0 30, from(hsla(0,0%,100%,.6)), to(hsla(0,0%,100%,0)));
+				/* 气泡阴影 */
+				-moz-box-shadow: 1px 1px 2px hsla(0,0%,0%,.3);
+				-webkit-box-shadow: 1px 1px 2px hsla(0,0%,0%,.3);
+				box-shadow: 1px 1px 2px hsla(0,0%,0%,.3); /* Opera, IE 9 */
+			}
+			/* 鼠标移动效果，阴影 */
+			blockquote:hover {
+				top: -2px;
+				left: -2px;
+				-moz-box-shadow: 3px 3px 2px hsla(0,0%,0%,.3);
+				-webkit-box-shadow: 3px 3px 2px hsla(0,0%,0%,.3);
+				box-shadow: 3px 3px 2px hsla(0,0%,0%,.3); /* Opera, IE 9 */
+			}
+			/* 气泡三角 */
+			blockquote:after {
+				content: "\00a0"; /* &nbsp; */
+				display: block;
+				position: absolute;
+				top: 20px;
+				left: -20px; /* width of right border */
+				width: 0;
+				height: 0;
+				border-width: 10px 20px 10px 0;
+				border-style: solid;
+				border-color: transparent hsla(182,44%,76%,.5) transparent transparent;
+			}
+			.clear{
+				clear:both;
+
+			}
+			footer{
+				text-align: center;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<header>
+			<!-- Website name and navigation -->
+			<h1>xujanus的博客</h1>
+			
+			<nav>
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">目录</a></li>
+					<li><a href="#">关于</a></li>
+					<li><a href="#">联系</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<!-- 博主留言 -->
+			<section class="mainContent blogger_talk">
+				<ol>
+					<li>
+						<div>
+							<img class="blogger_face_icon" alt="头像">
+							<h4>博主</h4>
+							<span>2015-12-11</span>
+						</div>
+						<blockquote>
+							<p>首页博主留言模块上线，我是模仿《CSS3使用指南》里第2章的气泡留言做的。这是第一条留言~</p>
+						</blockquote>
+					</li>
+				</ol>
+			</section>
+
+			<!-- Blog sidebar -->
+			<aside>
+				<h2>侧边栏</h2>
+				<p>侧边栏的内容放在这里，可以加入 <a href="#">外链</a>什么的</p>
+			</aside>		
+		</section>
+		<div class="clear"></div>
+		<footer>
+			<!-- Copyright and other stuff -->
+			<p>My amazing blog &copy; 2015</p>
+		</footer>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script><!-- jquery引入 -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//设置头像
+			$(".blogger_face_icon").attr("src","https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3230164702,1141021051&fm=116&gp=0.jpg");
+		});
+	</script>
+	</body>
 </html>
