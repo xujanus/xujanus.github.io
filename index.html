@@ -4,6 +4,7 @@
 	<head>
 		<title>xujanus的博客</title>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=1" />
 		<style>
 			body {
 				background: url(images/background.gif);
@@ -18,7 +19,7 @@
 				float:right;
 			}
 			header{
-				margin-bottom:8%;
+				margin-bottom:5%;
 			}
 
 
@@ -49,6 +50,10 @@
 			}
 
 			/* 博主留言部分 */
+			.blogger_talk section{
+				clear: both;
+				padding-top: 20px;
+			}
 			.blogger_talk div{
 				float:left;
 				width: 110px;
@@ -63,11 +68,6 @@
 				-o-transform: rotate(-5deg);
 				-webkit-transform: rotate(-5deg);
 				transform: rotate(-5deg);
-			}
-			.blogger_talk ol {
-				margin: 0;
-				padding: 0;
-				list-style: none;
 			}
 			.blogger_face_icon{
 				width:110px;
@@ -123,6 +123,21 @@
 			footer{
 				text-align: center;
 			}
+
+			/* 媒体查询 */
+			@media screen and (max-width: 980px) {
+				.mainContent{
+					float:none;
+					clear: both;
+					width: 100%;
+				}
+				aside{
+					float:none;
+					clear: both;
+					width: 100%;
+					padding-top: 20px;
+				}
+			}
 		</style>
 	</head>
 	
@@ -144,8 +159,7 @@
 		<section>
 			<!-- 博主留言 -->
 			<section class="mainContent blogger_talk">
-				<ol>
-					<li>
+				<section>
 						<div>
 							<img class="blogger_face_icon" alt="头像">
 							<h4>博主</h4>
@@ -154,14 +168,23 @@
 						<blockquote>
 							<p>首页博主留言模块上线，我是模仿《CSS3使用指南》里第2章的气泡留言做的。这是第一条留言~</p>
 						</blockquote>
-					</li>
-				</ol>
+				</section>
+				<section>
+						<div>
+							<img class="blogger_face_icon" alt="头像">
+							<h4>博主</h4>
+							<span>2016-2-24</span>
+						</div>
+						<blockquote>
+							<p>之前打球手骨折了，好久没更新了。这次更新了支持移动端的页面自适应</p>
+						</blockquote>
+				</section>
 			</section>
 
 			<!-- Blog sidebar -->
 			<aside>
-				<h2>侧边栏</h2>
-				<p>侧边栏的内容放在这里，可以加入 <a href="#">外链</a>什么的</p>
+				<h2>边栏</h2>
+				<p>边栏的内容放在这里，可以加入 <a href="#">外链</a>什么的</p>
 			</aside>		
 		</section>
 		<div class="clear"></div>
