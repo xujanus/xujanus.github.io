@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>comic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+
+    <style>
+        * { margin: 0; padding: 0; }
+        html, body { height: 100%; width: 100%; }
+        canvas { display: block; }
+
+        body {
+            color: #fff;
+            font-family: Verdana, Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a.button {
+            background: #185da8;
+            border-radius: 5px;
+            display: block;
+            font-size: 30px;
+            margin:0 auto;
+            padding: 10px;
+            width: 200px;
+        }
+        a.button2 {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            display: block;
+        }
+
+        table{
+            margin:0 auto;
+            text-align: right;
+        }
+
+        #gameUI {
+            position: absolute; /* Places UI on top of the canvas */
+        }
+
+
+        #gameIntro{
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px 0;
+            text-align: center;
+        }
+        #gameIntro p {
+            margin: 50px;
+        }
+
+        #gameStats {
+            color: black;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#gamePlay").click(function(e) {
+                e.preventDefault();
+                $("#gameUI").hide();
+                $("#gameStats").show();
+                canvasStart($("#talk1").val(),$("#talk2").val());
+            });
+
+            $("#gameStats").click(function(e) {
+                e.preventDefault();
+                $("#gameUI").show();
+                $("#gameStats").hide();
+                canvasStart($("#talk1").val(),$("#talk2").val());
+            });
+
+            function canvasStart(t1,t2){
+                var canvas = $("#myCanvas");
+                var context = canvas.get(0).getContext("2d");
+                init();
+
+                //加载背景图片
+                var background_pic = new Image();
+                background_pic.src = "test.jpg";
+                $(background_pic).load(function() {//要等load完再执行
+                    context.drawImage(background_pic,0,0);
+                    writeTalk();
+                    $("#myCanvas").hide();
+                    $("#comic").attr("src",canvas.get(0).toDataURL("image/png"));
+                    $("#comic").attr("width",window.innerWidth);
+                });
+
+                /**
+                 * 初始化方法，初始画布的大小（CSS）和画布内的像素值宽高
+                 */
+                function init() {
+                    //图片的宽高
+                    canvas.get(0).width = 417;//内部宽度（像素值）
+                    canvas.get(0).height = 952;
+                    canvas.width(window.innerWidth);//外部宽度（CSS设置）
+                    var canvas_height = ( window.innerWidth * canvas.get(0).height) / canvas.get(0).width; //等比缩高
+                    canvas.height(canvas_height);
+                }
+
+                function writeTalk(){
+                    //写对白
+                    var talk1 = t1;//最长13个字
+                    var talk2 = t2;//最长9个字
+
+                    changeTalkSize(33,talk1,166,30,85);
+                    changeTalkSize(33,talk2,108,160,395);
+                    //自动缩放对白
+                    function changeTalkSize(font_size,talk ,size,x,y){
+                        context.font=font_size+"px sans-serif";
+                        if(context.measureText(talk).width > size && font_size > 2){
+                            //                        console.log("size:"+font_size+",width:"+context.measureText(talk).width);
+                            font_size = Math.floor(font_size - 0.1);
+                            context.font=font_size+"px sans-serif";
+                            changeTalkSize(font_size,talk ,size,x,y);
+                        }else{
+//                            console.log("final,size:"+font_size+",width:"+context.measureText(talk).width);
+                            context.fillText(talk,x,y);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+<div id="gameUI">
+    <div id="gameIntro">
+        <h1>宝爸宝妈的感情小船，会因什么而翻掉？</h1>
+        <p>
+        <table>
+            <tr>
+                <td>老婆说：</td>
+                <td><input id="talk1" tyle="text" placeholder="老公，去给孩子换个尿布！" maxlength="13" ></td>
+            </tr>
+            <tr>
+                <td>老公却说：</td>
+                <td><input id="talk2" tyle="text" placeholder="尿布在哪？" maxlength="9" ></td>
+            </tr>
+        </table>
+        </p>
+        <p><a id="gamePlay" class="button" href="">确认</a></p>
+    </div>
+</div>
+<div id="gameStats">
+    <p><a class="button2" href="">重来</a></p>
+</div>
+<canvas id="myCanvas" width="300" height="300">
+    <!-- Insert fallback content here -->
+</canvas>
+<img id="comic">
+</body>
+</html>
