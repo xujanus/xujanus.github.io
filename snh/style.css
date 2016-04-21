@@ -146,6 +146,10 @@ Main components
   background: #75ce66;
 }
 
+.cd-timeline-img.cd-author {
+  background: #FF9900;
+}
+
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
     width: 60px;
@@ -182,7 +186,13 @@ Main components
 }
 .cd-timeline-content h2 {
   color: #303e49;
+  line-height: 1.6;
 }
+
+.cd-content-image {
+  margin-top: 1em;
+}
+
 .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
   font-size: 13px;
   font-size: 0.8125rem;
