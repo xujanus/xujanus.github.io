@@ -100,7 +100,11 @@
                     writeTalk();
                     $("#myCanvas").hide();
                     $("#comic").attr("src",canvas.get(0).toDataURL("image/png"));
-                    $("#comic").attr("width",window.innerWidth);
+					if(window.innerWidth > 1170){//PC端的话
+						$("#comic").attr("width",417);
+					}else{
+						$("#comic").attr("width",window.innerWidth);
+					}
                 });
 
                 /**
